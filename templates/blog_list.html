@@ -1,0 +1,124 @@
+{% extends "base.html"%}
+
+{% block content%}
+<li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Choose Category
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href = '/blogs/category/tn/'>&nbsp;  Technology</a></li>
+        <li><a href = '/blogs/category/en/'>&nbsp;  Entrepreneurship</a></li>
+        <li><a href = '/blogs/category/ds/'>&nbsp;  Design</a></li>
+        <li><a href = '/blogs/category/cl/'>&nbsp;  Culture</a></li>
+        <li><a href = '/blogs/category/sl/'>&nbsp;  Self</a></li>
+
+        </ul>
+</li>
+{% endblock content%}
+
+
+
+{% block form%}
+      <form class="navbar-form navbar-left" method ='GET' action="">
+      <div class="form-group">
+        <input type="text" class="form-control" name="q" placeholder="Search Blogs.." value="{{request.GET.q}}">
+      </div>
+      <button type="submit" class="btn btn-default">Search</button>
+    </form>
+{% endblock form%}
+
+
+
+
+{% block right_side%}
+      <li><a href = '/blogs/create/'>Create a Blog</a></li>
+      {% if not user.is_authenticated %}
+           <li><a href='/login/'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+           <li><a href='/register/'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      {% endif %}
+
+      {% if user.is_authenticated %}
+           <li><a href='/logout/'><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      {% endif %}
+{% endblock right_side%}
+
+
+{% block body %}
+
+
+<div  class="page-header">
+{% if genre == 'tn'%}
+<h1><i><strong>Technology</strong></i></h1>
+    <p>&nbsp;<b>The Future</b></p>
+{% endif %}
+    {% if genre == 'en'%}
+<h1><i><strong>Entrepreneurship</strong></i></h1>
+     <p>&nbsp;<b>Be the Boss</b></p>
+{% endif %}
+    {% if genre == 'ds'%}
+<h1><i><strong>Design</strong></i></h1>
+     <p>&nbsp;<b>More than just a pretty typeface</b></p>
+{% endif %}
+    {% if genre == 'cl'%}
+<h1><i><strong>Culture</strong></i></h1>
+    <p>&nbsp;<b>High, low, and sideways.</b></p>
+{% endif %}
+    {% if genre == 'sl'%}
+<h1><i><strong>Self</strong></i></h1>
+    <p>&nbsp;<b>Live better.</b></p>
+{% endif %}
+    {% if genre == None %}
+<h1><i><strong>Welcome to NewMeans</strong></i></h1>
+    <p>&nbsp;<b>where words matter.</b></p>
+{% endif %}
+</div>
+
+
+<div class="list-body">
+<div class="col-sm-6 col-sm-offset-3">
+{% for obj in object_list %}
+
+
+<div class="row">
+<div class="col-sm-12">
+<div class="thumbnail">
+<div class="caption">
+
+<h3><a href = '/blogs/{{obj.id}}/'>{{obj.title}}</a><small>  {{obj.timestamp|timesince}} ago</small></h3>
+<!--{% if obj.user.get_full_name %}<p>Author: {{ obj.user.get_full_name }}</p>{% endif %}-->
+ <p><b><i>Author</i></b>: <b><i>{{ obj.user.get_username }}</i></b></p>
+
+ {% if obj.image %}
+<img src="{{obj.image.url}}" class="img-thumbnail" ><br/><br/>
+{% endif %}
+    <div style="float: right;"><p><a href = '/blogs/{{obj.id}}/' class="btn btn-default" role="button">View</a></p></div>
+
+    <p>{{obj.content|linebreaks|truncatechars:60}}</p>
+
+
+</div>
+</div>
+</div>
+<hr/>
+</div>
+
+{% endfor %}
+</div>
+<div class="pagination" >
+    <span class="step-links">
+        {% if object_list.has_previous %}
+
+            <a href="?{{page_request_var}}={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{request.GET.q}}{% endif %}"><< previous</a>
+        {% endif %}
+
+        <!--<span class="current">
+            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}
+        </span>-->
+
+        {% if object_list.has_next %}
+            <a href="?{{page_request_var}}={{object_list.next_page_number }}{% if request.GET.q %}&q={{request.GET.q}}{% endif %}"> &nbsp; next >></a>
+             {% endif %}
+    </span>
+
+</div>
+</div>
+{% endblock body %}

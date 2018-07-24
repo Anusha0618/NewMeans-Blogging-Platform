@@ -1,0 +1,122 @@
+{% load staticfiles %}
+<!--<html xmlns:background-color="http://www.w3.org/1999/xhtml"> -->
+<html>
+
+<head>
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <title>
+        {% block head_title %}NewMeans{% endblock head_title %}
+    </title>
+    <!-- Latest compiled and minified CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href='{% static "css/base.css"  %}'/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        {% block style %}body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+h1{
+color: #777777;
+}
+
+/*.list-body a:link {
+    color: red;
+}*/
+
+/* visited link */
+.list-body a:visited {
+    color: black;
+}
+
+/* mouse over link */
+.list-body a:hover {
+    color: red;
+}
+
+/* selected link
+.list-body a:active {
+    color: blue;
+}
+*/
+
+{% endblock style %}
+
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href='/blogs/'>NewMeans</a>
+    </div>
+
+      <ul class="nav navbar-nav">
+      <li >
+          <a href='/blogs/'>Home</a>
+      </li>
+
+
+          {% block content%}
+            {% endblock content%}
+
+    </ul>
+      {% block form%}
+
+      {% endblock form %}
+
+   <ul class="nav navbar-nav navbar-right">
+       {% block right_side%}
+
+       {% endblock right_side%}
+    </ul>
+
+  </div>
+</nav>
+
+<div class="container">
+{% include "messages_display.html"%}
+    {% block body %}
+
+    {% endblock body %}
+</div>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
+
+<script   src="http://code.jquery.com/jquery-1.12.2.min.js"   integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk="   crossorigin="anonymous"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js'></script>
+<script type="text/javascript">
+  $(".comment-reply-btn").click(function(event){
+        event.preventDefault();
+        $(".comment-r").fadeOut();
+        $(this).parent().next(".comment-reply").fadeToggle();
+    })
+   $(".comment-r-btn").click(function(event){
+        event.preventDefault();
+        $(this).parent().next(".comment-reply").fadeOut();
+        $(".comment-r").fadeToggle();
+    })
+
+   </script>
+</body>
+</html>
+
+

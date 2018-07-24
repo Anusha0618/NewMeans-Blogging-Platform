@@ -1,0 +1,96 @@
+{% extends "base.html"%}
+{% load crispy_forms_tags %}
+
+{% block right_side%}
+      <li><a href = '/blogs/create/'>Create a Blog</a></li>
+{% if not user.is_authenticated %}
+      <li><a href='/login/'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href='/register/'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+{% endif %}
+{% if user.is_authenticated %}
+<li><a href='/logout/'><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+{% endif %}
+{% endblock right_side%}
+
+{% block head_title %}{{instance.title}}| {{block.super}}{% endblock head_title %}
+
+{% block body %}
+
+
+ <div class="col-cm-6 col-sm-offset-2">
+    {% if instance.user_id == user.id %}
+    <div class="dropdown" style="float: right;">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">More options
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href='/blogs/{{instance.id}}/edit/'>Edit Blog</a></li>
+      <li><a href='/blogs/{{instance.id}}/delete/'>Delete Blog</a></li>
+
+    </ul>
+  </div>
+    {% endif %}
+     <h1>{{title}}<small>&nbsp;{{instance.timestamp}}</small></h1>
+     <p>
+    <b><i>Author</i></b>: <b><i>{{ instance.user.get_username }}</i></b>
+</p>
+{% if instance.image and instance.image.url %}
+            <img src="{{ instance.image.url }}" alt="blog image" class="img-responsive" rotate="0"> {% endif %}<br/><br/>
+
+     {{instance.content| linebreaks}}<br/>
+
+    <div>
+
+     <p class="lead">Comments</p>
+        {% if user.is_authenticated %}
+        <form method="POST" action=".">{% csrf_token %}
+            {{comment_form|crispy}}
+            <input type="submit" value="Post Comment" class="btn btn-default">
+        </form>
+        {% endif %}
+        <hr/>
+
+        {% for comment in comments %}
+
+        <blockquote>
+            <p>{{comment.content}}</p>
+            <footer>via{{comment.user}} | {{comment.timestamp|timesince}} ago |
+                {% if comment.children.count > 1 %}<a class="comment-reply-btn" href="#">View {{comment.children.count}} Replies</a>{% endif %}  {% if comment.children.count == 1 %}<a class="comment-reply-btn" href="#">View {{comment.children.count}} Reply</a>{% endif %} |{% if user.is_authenticated %}<a class="comment-r-btn" href="#">Reply</a>{% endif %}</footer>
+            <div class="comment-reply"  style="display:none;">
+
+            {% for child_comment in comment.children %}
+            <blockquote>
+               <p>{{child_comment.content}}</p>
+               <footer>via{{child_comment.user}} | {{child_comment.timestamp|timesince}} ago</footer>
+                </blockquote>
+            {% endfor %}
+
+
+                {% if user.is_authenticated %}
+            <form method="POST" action=".">{% csrf_token %}
+            {{comment_form|crispy}}
+             <input type="hidden" name="parent_id" value="{{comment.id}}">
+            <input type="submit" value="Reply" class="btn btn-default">
+        </form>{% endif %}
+
+
+                </div>
+
+
+            <div class="comment-r"  style="display:none;">
+                <form method="POST" action=".">{% csrf_token %}
+            {{comment_form|crispy}}
+             <input type="hidden" name="parent_id" value="{{comment.id}}">
+            <input type="submit" value="Reply" class="btn btn-default">
+        </form>
+
+
+                </div>
+        </blockquote>
+        <hr/>
+        {% endfor %}
+        </div>
+
+</div>
+
+{% endblock body %}
+

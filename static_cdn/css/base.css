@@ -1,0 +1,23 @@
+h1{
+color: #777777;
+}
+
+/*.list-body a:link {
+    color: red;
+}*/
+
+/* visited link */
+.list-body a:visited {
+    color: black;
+}
+
+/* mouse over link */
+.list-body a:hover {
+    color: red;
+}
+
+/* selected link
+.list-body a:active {
+    color: blue;
+}
+*/

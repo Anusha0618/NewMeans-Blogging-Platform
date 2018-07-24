@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block right_side%}
+
+<li><a href='/logout/'><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+{% endblock right_side%}
+
+{% block body %}
+<div class='col-sm-6 col-sm-offset-3'>
+<h1>{{quote}}</h1>
+
+<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+{{ form.as_p }}
+
+    <input type='submit' class='btn btn-success' value={{b}} />
+</form>
+</div>
+{% endblock body %}
+
+
