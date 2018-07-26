@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 import os
+import MySQLdb
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -85,6 +86,15 @@ DATABASES = {
         'PASSWORD': "root"
     }
 }
+'''DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'anusha0618$newmeans',
+        'HOST': 'anusha0618.mysql.pythonanywhere-services.com',
+        'USER':"anusha0618",
+        'PASSWORD': "anusharoot"
+    }
+}'''
 #MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #MEDIA_URL = '/media/'
 # Password validation
