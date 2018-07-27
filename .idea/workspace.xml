@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="afe982a6-b5da-4880-ac22-bb97da9cb1fc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newmeans/settings.py" afterPath="$PROJECT_DIR$/newmeans/settings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +16,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/newmeans/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="92" column="61" lean-forward="false" selection-start-line="92" selection-start-column="61" selection-end-line="92" selection-end-column="61" />
+            <state relative-caret-position="397">
+              <caret line="96" column="1" lean-forward="true" selection-start-line="96" selection-start-column="1" selection-end-line="96" selection-end-column="1" />
               <folding>
                 <element signature="e#309#318#0" expanded="true" />
               </folding>
@@ -105,8 +104,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="473" />
-    <option name="y" value="123" />
+    <option name="x" value="34" />
+    <option name="y" value="92" />
     <option name="width" value="1078" />
     <option name="height" value="909" />
   </component>
@@ -185,7 +184,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="473" y="123" width="1078" height="909" extended-state="1" />
+    <frame x="34" y="92" width="1078" height="909" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2734531" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -298,8 +297,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/newmeans/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="92" column="61" lean-forward="false" selection-start-line="92" selection-start-column="61" selection-end-line="92" selection-end-column="61" />
+        <state relative-caret-position="397">
+          <caret line="96" column="1" lean-forward="true" selection-start-line="96" selection-start-column="1" selection-end-line="96" selection-end-column="1" />
           <folding>
             <element signature="e#309#318#0" expanded="true" />
           </folding>

@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'newmeans.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'newmeans',
@@ -85,8 +85,8 @@ DATABASES = {
         'USER':"root",
         'PASSWORD': "root"
     }
-}
-'''DATABASES = {
+}'''
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'anusha0618$newmeans',
@@ -94,7 +94,7 @@ DATABASES = {
         'USER':"anusha0618",
         'PASSWORD': "anusharoot"
     }
-}'''
+}
 #MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #MEDIA_URL = '/media/'
 # Password validation
