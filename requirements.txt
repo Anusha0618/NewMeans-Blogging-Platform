@@ -8,7 +8,7 @@ Django==2.1b1
 django-debug-toolbar==1.9.1
 django-filter==2.0.0.dev1
 django-webpack-loader==0.6.0
-djangorestframework==3.8.2
+djangorestframework==3.9.1
 djangorestframework-jwt==1.11.0
 djangorestframework-simplejwt==3.2.3
 et-xmlfile==1.0.1
