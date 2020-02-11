@@ -4,7 +4,7 @@ chardet==3.0.4
 click==6.7
 configparser==3.5.0
 decorator==4.3.0
-Django==2.1b1
+Django==2.2.10
 django-debug-toolbar==1.9.1
 django-filter==2.0.0.dev1
 django-webpack-loader==0.6.0
