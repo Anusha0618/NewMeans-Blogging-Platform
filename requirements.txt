@@ -5,7 +5,7 @@ click==6.7
 configparser==3.5.0
 decorator==4.3.0
 Django==2.1b1
-django-debug-toolbar==1.9.1
+django-debug-toolbar==1.11.1
 django-filter==2.0.0.dev1
 django-webpack-loader==0.6.0
 djangorestframework==3.8.2
